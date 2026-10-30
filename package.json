@@ -1,0 +1,24 @@
+{
+  "name": "serverest-cypress-automation",
+  "version": "1.0.0",
+  "description": "Testes automatizados E2E e de API do ServeRest com Cypress",
+  "private": true,
+  "author": "Luidson Lucas Bortolatto",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\""
+  },
+  "devDependencies": {
+    "cypress": "^16.2.1"
+  },
+  "allowScripts": {
+    "cypress@16.2.1": true
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+
+# Artefatos gerados pelo Cypress a cada execução
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+.DS_Store
