@@ -10,10 +10,7 @@ describe('API - Produtos', () => {
 
   beforeEach(() => {
     usuarioComum = gerarUsuario();
-    usuariosService.cadastrar(usuarioComum).then((resposta) => {
-      expect(resposta.status).to.eq(201);
-      usuarioComum._id = resposta.body._id;
-    });
+    cy.cadastrarUsuarioViaApi(usuarioComum);
     loginService.autenticar(usuarioComum.email, usuarioComum.password).then((resposta) => {
       expect(resposta.status).to.eq(200);
       token = resposta.body.authorization;
@@ -28,7 +25,6 @@ describe('API - Produtos', () => {
       expect(resposta.body.message).to.eq('Rota exclusiva para administradores');
     });
 
-    // A falha mais grave seria responder 403 e gravar o produto mesmo assim
     produtosService.buscarPorNome(produto.nome).then((resposta) => {
       expect(resposta.status).to.eq(200);
       expect(resposta.body.quantidade).to.eq(0);

@@ -16,7 +16,6 @@ export const homePage = {
     cy.get('[data-testid=botaoPesquisar]').click();
   },
 
-  // Chamar depois de pesquisar pelo nome único: assim só existe um card na tela
   adicionarNaLista() {
     cy.get('[data-testid=adicionarNaLista]').should('have.length', 1).click();
   },

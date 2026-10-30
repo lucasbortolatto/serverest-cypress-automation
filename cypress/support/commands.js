@@ -1,7 +1,14 @@
 import { loginService } from './services/loginService';
+import { usuariosService } from './services/usuariosService';
 
-// Monta a sessão sem passar pela tela de login: o front só precisa do token no localStorage.
-// O login pela tela é testado uma vez, no cenário de cadastro de usuário.
+Cypress.Commands.add('cadastrarUsuarioViaApi', (usuario) => {
+  usuariosService.cadastrar(usuario).then((resposta) => {
+    expect(resposta.status).to.eq(201);
+    usuario._id = resposta.body._id;
+  });
+});
+
+// O front só precisa do token no localStorage para considerar o usuário logado
 Cypress.Commands.add('loginViaApi', (email, password) => {
   loginService.autenticar(email, password).then((resposta) => {
     expect(resposta.status).to.eq(200);

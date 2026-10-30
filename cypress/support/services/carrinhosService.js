@@ -1,7 +1,6 @@
 const url = `${Cypress.expose('apiUrl')}/carrinhos`;
 
 export const carrinhosService = {
-  // produtos: [{ idProduto, quantidade }]
   cadastrar(produtos, token) {
     return cy.request({
       method: 'POST',
@@ -12,7 +11,6 @@ export const carrinhosService = {
     });
   },
 
-  // Cancela o carrinho do usuário dono do token e devolve as unidades ao estoque
   cancelarCompra(token) {
     return cy.request({
       method: 'DELETE',

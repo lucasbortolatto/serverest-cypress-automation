@@ -1,4 +1,3 @@
-// Page Objects guardam seletores e ações de cada tela: as assertivas ficam no teste
 export const loginPage = {
   visitar() {
     cy.visit('/login');

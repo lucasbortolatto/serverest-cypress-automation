@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker';
 
-// Usuário comum por padrão; quem precisar de admin pede com gerarUsuario({ administrador: 'true' })
 export function gerarUsuario(sobrescrever = {}) {
   return {
     nome: faker.person.fullName(),

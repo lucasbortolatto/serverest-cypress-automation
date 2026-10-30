@@ -11,7 +11,6 @@ describe('UI - Cadastro de usuário', () => {
     usuario = gerarUsuario();
   });
 
-  // Único teste que passa pela tela de login; os demais montam a sessão pela API
   it('novo usuário se cadastra, sai e entra novamente pela tela de login', () => {
     cadastroUsuarioPage.visitar();
     cadastroUsuarioPage.cadastrar(usuario);
@@ -26,7 +25,6 @@ describe('UI - Cadastro de usuário', () => {
     cy.location('pathname').should('eq', '/home');
     homePage.botaoLogout().should('be.visible');
 
-    // A tela mostrou sucesso; a API confirma que o dado foi gravado como usuário comum
     usuariosService.buscarPorEmail(usuario.email).then((resposta) => {
       expect(resposta.body.quantidade).to.eq(1);
       expect(resposta.body.usuarios[0]).to.include({
@@ -36,7 +34,6 @@ describe('UI - Cadastro de usuário', () => {
     });
   });
 
-  // O usuário nasce pela tela, então o id vem da API na limpeza
   afterEach(() => {
     usuariosService.buscarPorEmail(usuario.email).then((resposta) => {
       resposta.body.usuarios.forEach(({ _id }) => usuariosService.excluir(_id));

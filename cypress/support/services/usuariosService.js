@@ -1,5 +1,3 @@
-// Services só fazem a requisição e devolvem a resposta: as assertivas ficam no teste.
-// failOnStatusCode: false deixa o teste verificar respostas de erro (400, 401, 403).
 const url = `${Cypress.expose('apiUrl')}/usuarios`;
 
 export const usuariosService = {

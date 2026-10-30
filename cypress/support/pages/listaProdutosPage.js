@@ -1,6 +1,5 @@
 export const listaProdutosPage = {
-  // A tabela não tem data-testid: a linha é localizada pelo nome único, nunca pela posição.
-  // Devolve o texto das colunas Nome, Preço, Descrição e Quantidade.
+  // A tabela não tem data-testid, então a linha é achada pelo nome
   colunasDoProduto(nome) {
     return cy
       .contains('tr', nome)

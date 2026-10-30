@@ -14,10 +14,7 @@ describe('UI - Cadastro de produto', () => {
     admin = gerarUsuario({ administrador: 'true' });
     produto = gerarProduto();
 
-    usuariosService.cadastrar(admin).then((resposta) => {
-      expect(resposta.status).to.eq(201);
-      admin._id = resposta.body._id;
-    });
+    cy.cadastrarUsuarioViaApi(admin);
     cy.loginViaApi(admin.email, admin.password);
   });
 
@@ -26,7 +23,6 @@ describe('UI - Cadastro de produto', () => {
     cadastroProdutoPage.cadastrar(produto);
 
     cy.location('pathname').should('eq', '/admin/listarprodutos');
-    // Uma assertiva por coluna: se falhar, a mensagem diz qual valor veio errado
     listaProdutosPage
       .colunasDoProduto(produto.nome)
       .then(([nome, preco, descricao, quantidade]) => {
@@ -37,7 +33,7 @@ describe('UI - Cadastro de produto', () => {
       });
   });
 
-  // O produto nasce pela tela, então o id vem da busca por nome
+  // O produto foi criado pela tela, então o id vem da busca por nome
   afterEach(() => {
     loginService.autenticar(admin.email, admin.password).then(({ body: { authorization } }) => {
       produtosService.buscarPorNome(produto.nome).then((resposta) => {

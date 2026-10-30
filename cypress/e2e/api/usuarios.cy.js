@@ -6,14 +6,10 @@ describe('API - Usuários', () => {
 
   beforeEach(() => {
     usuarioExistente = gerarUsuario();
-    usuariosService.cadastrar(usuarioExistente).then((resposta) => {
-      expect(resposta.status).to.eq(201);
-      usuarioExistente._id = resposta.body._id;
-    });
+    cy.cadastrarUsuarioViaApi(usuarioExistente);
   });
 
   it('não permite cadastrar usuário com e-mail já utilizado', () => {
-    // Nome e senha novos, só o e-mail repetido: o bloqueio só pode ser pelo e-mail
     const novoUsuario = gerarUsuario({ email: usuarioExistente.email });
 
     usuariosService.cadastrar(novoUsuario).then((resposta) => {
@@ -22,7 +18,6 @@ describe('API - Usuários', () => {
     });
   });
 
-  // Limpeza por cortesia com o ambiente público; nenhum teste depende dela
   afterEach(() => {
     usuariosService.excluir(usuarioExistente._id);
   });

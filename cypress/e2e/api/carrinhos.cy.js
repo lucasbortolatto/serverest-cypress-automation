@@ -6,7 +6,7 @@ import { produtosService } from '../../support/services/produtosService';
 import { usuariosService } from '../../support/services/usuariosService';
 
 describe('API - Carrinhos', () => {
-  // Mais de 1 unidade prova que a API desconta a quantidade pedida, e não "um por item"
+  // Com 2 unidades dá para ver que a API desconta a quantidade pedida, e não só 1 por item
   const QUANTIDADE_RESERVADA = 2;
 
   let admin;
@@ -17,14 +17,12 @@ describe('API - Carrinhos', () => {
     admin = gerarUsuario({ administrador: 'true' });
     produto = gerarProduto();
 
-    usuariosService.cadastrar(admin).then((resposta) => {
-      expect(resposta.status).to.eq(201);
-      admin._id = resposta.body._id;
-    });
+    cy.cadastrarUsuarioViaApi(admin);
     loginService.autenticar(admin.email, admin.password).then((resposta) => {
       expect(resposta.status).to.eq(200);
       token = resposta.body.authorization;
     });
+    // cy.then: o token só existe depois que o login executa
     cy.then(() => produtosService.cadastrar(produto, token)).then((resposta) => {
       expect(resposta.status).to.eq(201);
       produto._id = resposta.body._id;
@@ -56,8 +54,7 @@ describe('API - Carrinhos', () => {
     });
   });
 
-  // Ordem importa: a API não exclui produto que está em carrinho nem usuário com carrinho.
-  // O carrinho já foi cancelado no teste; aqui sai o produto e depois o usuário.
+  // A API não exclui produto que está em carrinho nem usuário com carrinho
   afterEach(() => {
     produtosService.excluir(produto._id, token);
     usuariosService.excluir(admin._id);
