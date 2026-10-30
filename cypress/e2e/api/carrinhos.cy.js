@@ -54,8 +54,10 @@ describe('API - Carrinhos', () => {
     });
   });
 
-  // A API não exclui produto que está em carrinho nem usuário com carrinho
+  // A API não exclui produto que está em carrinho nem usuário com carrinho.
+  // Cancela antes, caso o teste tenha falhado com o carrinho ainda aberto.
   afterEach(() => {
+    carrinhosService.cancelarCompra(token);
     produtosService.excluir(produto._id, token);
     usuariosService.excluir(admin._id);
   });
