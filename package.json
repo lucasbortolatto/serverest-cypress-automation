@@ -11,9 +11,9 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cypress run",
-    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
-    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\"",
+    "test": "cypress run --browser chrome",
+    "test:api": "cypress run --browser chrome --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:ui": "cypress run --browser chrome --spec \"cypress/e2e/ui/**/*.cy.js\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
