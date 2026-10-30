@@ -39,6 +39,7 @@ describe('API - Carrinhos', () => {
       });
 
     produtosService.buscarPorId(produto._id).then((resposta) => {
+      expect(resposta.status).to.eq(200);
       expect(resposta.body.quantidade).to.eq(estoqueInicial - QUANTIDADE_RESERVADA);
     });
 
@@ -50,6 +51,7 @@ describe('API - Carrinhos', () => {
     });
 
     produtosService.buscarPorId(produto._id).then((resposta) => {
+      expect(resposta.status).to.eq(200);
       expect(resposta.body.quantidade).to.eq(estoqueInicial);
     });
   });
