@@ -10,7 +10,7 @@ Testes automatizados do [ServeRest](https://serverest.dev/): 3 cenários E2E no 
 
 ## Pré-requisitos
 
-- Node.js 24 (versão definida no `.nvmrc`). O Cypress 16 não roda em versões anteriores ao Node 22.
+- Node.js 22, 24 ou 26+, as versões suportadas pelo Cypress 16. O `.nvmrc` usa o 24.
 
 Com o [nvm](https://github.com/nvm-sh/nvm), basta rodar `nvm use` na pasta do projeto.
 
