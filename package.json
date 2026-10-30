@@ -13,10 +13,20 @@
     "cy:open": "cypress open",
     "test": "cypress run",
     "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
-    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\""
+    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "cypress": "^16.2.1"
+    "@eslint/js": "^10.0.1",
+    "cypress": "^16.2.1",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-cypress": "^7.0.2",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10"
   },
   "allowScripts": {
     "cypress@16.2.1": true
