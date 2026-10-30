@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.6.0",
     "cypress": "^16.2.1",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
