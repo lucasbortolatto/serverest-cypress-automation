@@ -1,0 +1,13 @@
+// Services só fazem a requisição e devolvem a resposta: as assertivas ficam no teste.
+// failOnStatusCode: false deixa o teste verificar respostas de erro (400, 401, 403).
+const url = `${Cypress.expose('apiUrl')}/usuarios`;
+
+export const usuariosService = {
+  cadastrar(usuario) {
+    return cy.request({ method: 'POST', url, body: usuario, failOnStatusCode: false });
+  },
+
+  excluir(id) {
+    return cy.request({ method: 'DELETE', url: `${url}/${id}`, failOnStatusCode: false });
+  },
+};
