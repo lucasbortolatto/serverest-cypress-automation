@@ -1,5 +1,7 @@
 # ServeRest - Automação com Cypress
 
+[![Testes](https://github.com/lucasbortolatto/serverest-cypress-automation/actions/workflows/testes.yml/badge.svg)](https://github.com/lucasbortolatto/serverest-cypress-automation/actions/workflows/testes.yml)
+
 Testes automatizados do [ServeRest](https://serverest.dev/): 3 cenários E2E no [front](https://front.serverest.dev/) e 3 cenários na API.
 
 ## Tecnologias
@@ -32,6 +34,10 @@ npm ci
 | `npm run format:check` | Verifica a formatação com o Prettier             |
 
 Os testes rodam contra os ambientes públicos do ServeRest, então não é preciso subir nada localmente.
+
+## Integração contínua
+
+O workflow [`testes.yml`](.github/workflows/testes.yml) roda no GitHub Actions a cada push e pull request na `main`, e também pode ser disparado manualmente. Ele instala o projeto do zero, roda o lint, a verificação de formatação e os 6 testes. Se algum teste falhar, os screenshots ficam disponíveis para download na execução.
 
 ## Estrutura
 
@@ -100,4 +106,3 @@ Casos que eu automatizaria na sequência:
 - Edição e exclusão de produto pela tela do admin
 - Concluir compra e conferir que o estoque não volta
 - Validação de contrato com JSON Schema nas respostas da API
-- Pipeline no GitHub Actions rodando lint e testes a cada push
